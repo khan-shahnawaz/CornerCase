@@ -6,14 +6,17 @@
 }
 #UserSolutionLabel
 {
-    font-weight: bold;
+    font-weight:bold; 
     font-size:larger;
-    
+    display: flex;
+    justify-content: center;
 }
 #UserCode
 {
     height: 500px;
-    width: 80%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .UserLang
 {
@@ -27,14 +30,17 @@
 }
 #EditorialSolutionLabel
 {
-    font-weight: bold; 
+    font-weight:bold; 
     font-size:larger;
-    display: inline;
+    display: flex;
+    justify-content: center;
 }
 #EditorialCode
 {
     height: 500px;
-    width: 80%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .EditorialLang

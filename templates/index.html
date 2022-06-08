@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <script src="{% static 'javascript/index.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
     <div class="UserSolution" >
     <label for="UserCode" id ="UserSolutionLabel">Your solution</label>
     <br> <br>
+    
     <div class = "UserLang">
     <label for="UserLanguage" id =UserLanguageLabel>Language:</label>
     <select name="UserLanguage" id="UserLanguage">
@@ -22,10 +24,10 @@
     <br>
     
     <br>
-    <textarea id = "UserCode" name="UserCode" > </textarea>>
+    <textarea id = "UserCode" name="UserCode" ></textarea>
     <br>
     <label for="UserFile">Choose a file:</label>
-    <input type="file" id ="File" name="UserFile">
+    <input type="file" id ="UserFile" name="UserFile">
     </div>
 
     <div class="EditorialSolution">
@@ -41,10 +43,10 @@
         <br>
         
         <br>
-        <textarea id = "EditorialCode" name="EditorialCode" > </textarea>>
+        <textarea id = "EditorialCode" name="EditorialCode" ></textarea>
         <br>
         <label for="EditorialFile">Choose a file:</label>
-        <input type="file" id ="File" name="EditorialFile">
+        <input type="file" id ="EditorialFile" name="EditorialFile">
         </div>
 </body>
 </html>
