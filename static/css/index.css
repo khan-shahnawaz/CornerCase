@@ -1,0 +1,43 @@
+.UserSolution
+{
+    float: left;
+    width: 50%;
+    margin-left: 0%;
+}
+#UserSolutionLabel
+{
+    font-weight: bold;
+    font-size:larger;
+    
+}
+#UserCode
+{
+    height: 500px;
+    width: 80%;
+}
+.UserLang
+{
+    float: left
+}
+.EditorialSolution
+{
+    float:right;
+    width: 50%;
+    margin-right: 0%;   
+}
+#EditorialSolutionLabel
+{
+    font-weight: bold; 
+    font-size:larger;
+    display: inline;
+}
+#EditorialCode
+{
+    height: 500px;
+    width: 80%;
+}
+
+.EditorialLang
+{
+    float: right;
+}

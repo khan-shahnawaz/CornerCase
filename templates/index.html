@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="UserSolution" >
+    <label for="UserCode" id ="UserSolutionLabel">Your solution</label>
+    <br> <br>
+    <div class = "UserLang">
+    <label for="UserLanguage" id =UserLanguageLabel>Language:</label>
+    <select name="UserLanguage" id="UserLanguage">
+        <option value="C++">C++ 17</option>
+        <option value="Python3.7">Python 3.7</option>
+    </select>
+    </div>
+    <br>
+    
+    <br>
+    <textarea id = "UserCode" name="UserCode" > </textarea>>
+    <br>
+    <label for="UserFile">Choose a file:</label>
+    <input type="file" id ="File" name="UserFile">
+    </div>
+
+    <div class="EditorialSolution">
+        <label for="EditorialCode" id ="EditorialSolutionLabel" >Editorial's solution</label>
+        <br> <br>
+        <div class="EditorialLang">
+        <label for="EditorialLanguage" id = 'EditorialLanguageLabel'>Language:</label>
+        <select name="EditorialLanguage" id="EditorialLanguage">
+            <option value="C++">C++ 17</option>
+            <option value="Python3.7">Python 3.7</option>
+        </select>
+        </div>
+        <br>
+        
+        <br>
+        <textarea id = "EditorialCode" name="EditorialCode" > </textarea>>
+        <br>
+        <label for="EditorialFile">Choose a file:</label>
+        <input type="file" id ="File" name="EditorialFile">
+        </div>
+</body>
+</html>
