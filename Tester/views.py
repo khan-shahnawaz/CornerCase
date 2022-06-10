@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from Tester.task import checkOutput
+from Tester.task import executeTask
 from .models import *
 # Create your views here.
 def index(request):
@@ -9,14 +9,14 @@ def index(request):
     if request.method=='POST':
         newExecutable=Executable()
         newExecutable.userCode=request.POST['UserCode']
-        newExecutable.userLanguage=request.POST['UserLanguage']
+        newExecutable.userLanguage=int(request.POST['UserLanguage'])
         newExecutable.editorialCode=request.POST['EditorialCode']
-        newExecutable.editorialLanguage=request.POST['EditorialLanguage']
+        newExecutable.editorialLanguage=int(request.POST['EditorialLanguage'])
         newExecutable.generatorCode=request.POST['GeneratorCode']
-        newExecutable.generatorLanguage=request.POST['GeneratorLanguage']
+        newExecutable.generatorLanguage=int(request.POST['GeneratorLanguage'])
         newExecutable.status="In queue"
-        checkOutput.delay()
         newExecutable.save()
+        executeTask.delay(newExecutable.queueNo)
     return  render(request,'index.html',{'ProgrammingLanguages':languages})
 def StatusPage(request,id):
     return HttpResponse('Hello')

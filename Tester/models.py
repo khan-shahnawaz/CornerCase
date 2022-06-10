@@ -1,12 +1,12 @@
-from asyncio.windows_events import NULL
 from django.db import models
 
 # Create your models here.
 class ProgrammingLanguage(models.Model):
     name=models.CharField(max_length=255)
     id= models.AutoField(unique=True, primary_key=True, null=False)
-    compileCommand=models.TextField(default=NULL)
+    compileCommand=models.TextField(default='')
     executeCommand=models.TextField(null=False)
+    fileExtension = models.CharField(default='.cpp',max_length=255)
 
 
 class Test(models.Model):
@@ -26,4 +26,3 @@ class Executable(models.Model):
     editorialLanguage=models.IntegerField()
     queueNo=models.AutoField(primary_key=True)
     testCases=models.ManyToManyField(Test)
-
