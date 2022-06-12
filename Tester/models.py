@@ -4,8 +4,8 @@ from django.db import models
 class ProgrammingLanguage(models.Model):
     name=models.CharField(max_length=255)
     id= models.AutoField(unique=True, primary_key=True, null=False)
-    compileCommand=models.TextField(default='')
-    executeCommand=models.TextField(null=False)
+    compileCommand=models.TextField(null=True)
+    executeCommand=models.TextField(null=True)
     fileExtension = models.CharField(default='.cpp',max_length=255)
 
 
