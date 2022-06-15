@@ -8,14 +8,6 @@ class ProgrammingLanguage(models.Model):
     executeCommand=models.TextField(null=True)
     fileExtension = models.CharField(default='.cpp',max_length=255)
 
-
-class Test(models.Model):
-    generatedTest=models.TextField()
-    userOutput=models.TextField()
-    editorialoutput=models.TextField()
-    passed=models.BooleanField(default=False)
-
-
 class Executable(models.Model):
     status=models.CharField(max_length=255)
     userCode=models.TextField()
@@ -25,4 +17,10 @@ class Executable(models.Model):
     editorialCode=models.TextField()
     editorialLanguage=models.IntegerField()
     queueNo=models.AutoField(primary_key=True)
-    testCases=models.ManyToManyField(Test)
+
+class Test(models.Model):
+    generatedTest=models.TextField()
+    userOutput=models.TextField()
+    editorialoutput=models.TextField()
+    passed=models.BooleanField(default=False)
+    executable=models.ForeignKey(Executable,on_delete=models.CASCADE,default=None)

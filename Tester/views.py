@@ -16,6 +16,7 @@ def index(request):
         newExecutable.generatorLanguage=int(request.POST['GeneratorLanguage'])
         newExecutable.status="In queue"
         newExecutable.save()
+        newExecutable.Test.all()
         executeTask.delay(newExecutable.queueNo)
     return  render(request,'index.html',{'ProgrammingLanguages':languages})
 def StatusPage(request,id):

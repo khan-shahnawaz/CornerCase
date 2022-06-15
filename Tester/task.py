@@ -66,5 +66,5 @@ def executeTask(queueid):
         newTest.generatedTest=generatedInput.read()
         newTest.userOutput=userOutput.read()
         newTest.editorialoutput=editorialOutput.read()
+        newTest.executable=newExecutable
         newTest.save()
-        newExecutable.testCases.add(newTest)
