@@ -1,1 +1,1 @@
-print("This is the generated output")
+print("Test 2 succeeded")

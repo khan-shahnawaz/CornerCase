@@ -1,1 +1,6 @@
-print("This is the generated output")
+#include <iostream>
+
+int main()
+{
+    std:: cout <<"Test 1 succeeded";
+}
