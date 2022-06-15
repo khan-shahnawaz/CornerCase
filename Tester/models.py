@@ -13,7 +13,7 @@ class Test(models.Model):
     generatedTest=models.TextField()
     userOutput=models.TextField()
     editorialoutput=models.TextField()
-    passed=models.BooleanField()
+    passed=models.BooleanField(default=False)
 
 
 class Executable(models.Model):
