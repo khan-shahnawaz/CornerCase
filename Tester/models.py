@@ -9,7 +9,7 @@ class ProgrammingLanguage(models.Model):
     fileExtension = models.CharField(default='.cpp',max_length=255)
 
 class Executable(models.Model):
-    status=models.CharField(max_length=255)
+    status=models.CharField(max_length=20)
     userCode=models.TextField()
     userLanguage=models.IntegerField()
     generatorCode=models.TextField()
