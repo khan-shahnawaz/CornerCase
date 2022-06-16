@@ -10,7 +10,7 @@ import os
 from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)
-testCaseLimit=1
+testCaseLimit=2
 celery = Celery(__name__)
 celery.config_from_object(__name__)
         #outputFile.write(str(len(p.stdout.decode('utf-8'))))
@@ -58,9 +58,9 @@ def executeTask(queueid):
         runCode(userLanguage,userFile,'./ProgramFiles/user',generatedInput,userOutput)
         generatedInput.seek(0)
         runCode(editorialLanguage,editorialFile,'./ProgramFiles/editorial',generatedInput,editorialOutput)
-        userOutput.flush()
+        userOutput.close()
         userOutput=open(userOutput.name,'r')
-        editorialOutput.flush()
+        editorialOutput.close()
         editorialOutput=open(editorialOutput.name,'r')
         generatedInput.seek(0)
         newTest.generatedTest=generatedInput.read()

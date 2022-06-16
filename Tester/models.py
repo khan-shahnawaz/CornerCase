@@ -16,6 +16,7 @@ class Executable(models.Model):
     generatorLanguage=models.IntegerField()
     editorialCode=models.TextField()
     editorialLanguage=models.IntegerField()
+    datetime=models.DateTimeField(default=None)
     queueNo=models.AutoField(primary_key=True)
 
 class Test(models.Model):
@@ -24,3 +25,5 @@ class Test(models.Model):
     editorialoutput=models.TextField()
     passed=models.BooleanField(default=False)
     executable=models.ForeignKey(Executable,on_delete=models.CASCADE,default=None)
+    def get_admin_url(self):
+        return "/admin/Tester/test/%d/" %self.id
