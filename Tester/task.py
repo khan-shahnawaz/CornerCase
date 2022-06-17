@@ -10,7 +10,7 @@ import os
 from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)
-testCaseLimit=2
+testCaseLimit=10
 celery = Celery(__name__)
 celery.config_from_object(__name__)
         #outputFile.write(str(len(p.stdout.decode('utf-8'))))
@@ -31,6 +31,11 @@ def executeTask(queueid):
             else:
                 toExecute=language.executeCommand.replace('filename',codeFile.name)
         subprocess.call(toExecute,shell=True,stdout=outputFile,stdin=inputFile)
+    def checkOutput(test,userOutput,editorialOutput):
+        if userOutput.split()==editorialOutput.split():
+            return 'Accepted'
+        else:
+            return 'Wrong Answer' 
     newExecutable=Executable.objects.get(queueNo=queueid)
     try:
         newExecutable.status='Running'
@@ -70,7 +75,10 @@ def executeTask(queueid):
             newTest.userOutput=userOutput.read()
             newTest.editorialoutput=editorialOutput.read()
             newTest.executable=newExecutable
+            newTest.verdict=checkOutput(newTest.generatedTest,newTest.userOutput,newTest.editorialoutput)
             newTest.save()
+            if newTest.verdict!='Accepted':
+                break
         newExecutable.status='Completed'
     except:
         newExecutable.status='Failed'

@@ -8,6 +8,54 @@
     <title>{{executable.status}}</title>
 </head>
 <body>
-    
+    <h1 style="text-align:center;">Status: {{executable.status}}</h1>
+    {% for test in testcases%}
+    <div style="justify-content: space-between;">
+        <span class="expandTest">
+        <label for="expandIcon" style="font-size: larger;">Test {{forloop.counter}}: {{test.verdict}}</label>                
+                <img src="{% static 'icons/expandMore.png' %} " id="expandIcon" style="vertical-align: middle;">
+        </span>
+                <div id="collapsible" style="display: none;flex-direction:row;">
+                <div style="width:34%;">
+                    <h3>Generated Testcase</h3>
+                    <p> {{test.generatedTest|linebreaksbr }}</p>
+                </div>
+                <div style="width:33%;">
+                    <h3>Your Output</h3>
+                    <p > {{test.userOutput|linebreaksbr }}</p>
+                    </div>
+                <div style="width:33%;">
+                    <h3>Expected Output</h3>
+                    <p > {{test.editorialoutput|linebreaksbr }}</p>
+                </div> 
+            </div>
+            <br>
+        </div>
+    {% endfor %}
+    <script>
+        window.onload=function()
+        {
+            var collapseButtons=document.getElementsByClassName('expandTest')
+            for (var i=0;i<collapseButtons.length;i++)
+            {
+                collapseButtons[i].addEventListener('click',expandCollapsible)
+            }
+        }
+        function expandCollapsible(event)
+        {
+            var collapsible = this.nextElementSibling;
+            var icon = this.firstElementChild.nextElementSibling;
+            if (collapsible.style.display=='flex')
+            {
+                collapsible.style.display='none';
+                icon.src='{% static 'icons/expandMore.png' %}'
+            }
+            else
+            {
+                collapsible.style.display='flex';
+                icon.src='{% static 'icons/expandLess.png' %}'
+            }
+        }
+    </script>
 </body>
 </html>

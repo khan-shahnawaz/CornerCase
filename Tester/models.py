@@ -23,7 +23,7 @@ class Test(models.Model):
     generatedTest=models.TextField()
     userOutput=models.TextField()
     editorialoutput=models.TextField()
-    passed=models.BooleanField(default=False)
+    verdict=models.CharField(default='Running',max_length=25)
     executable=models.ForeignKey(Executable,on_delete=models.CASCADE,default=None)
     def get_admin_url(self):
         return "/admin/Tester/test/%d/" %self.id

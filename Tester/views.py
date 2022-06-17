@@ -1,3 +1,4 @@
+from http.server import executable
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 import datetime
@@ -20,6 +21,13 @@ def index(request):
         newExecutable.save()
         executeTask.delay(newExecutable.queueNo)
         return redirect ('/status/{}'.format(newExecutable.queueNo))
-    return  render(request,'index.html',{'ProgrammingLanguages':languages})
+    return  render(request,'index.html',{
+        'ProgrammingLanguages':languages
+        })
 def StatusPage(request,id):
-    return  render(request,'status.html',{'executable':Executable.objects.get(queueNo=id)})
+    executableObject=Executable.objects.get(queueNo=id)
+    testCases=Test.objects.filter(executable=executableObject)
+    return  render(request,'status.html',{
+        'executable':executableObject,
+        'testcases':testCases,
+        })
