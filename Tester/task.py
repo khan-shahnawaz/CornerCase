@@ -80,6 +80,7 @@ def executeTask(queueid):
             if newTest.verdict!='Accepted':
                 break
         newExecutable.status='Completed'
-    except:
+    except Exception as errorMessage:
         newExecutable.status='Failed'
+        open('ErrorMessage.txt','w').write(str(errorMessage))
     newExecutable.save()
