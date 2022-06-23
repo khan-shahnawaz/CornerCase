@@ -15,6 +15,7 @@ RUN pip install tzdata
 
 RUN apk add --no-cache g++
 
+RUN apk add docker docker-compose
 RUN mkdir /CornerCase
 COPY . /CornerCase
 WORKDIR /CornerCase
