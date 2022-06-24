@@ -1,6 +1,6 @@
 # CornerCase
 
-A web application designed to find the corner test cases for incorrect code built using django, redis and celery.
+A web application designed to find the corner test cases for incorrect code built using django, redis and celery. The site is deployed [<ins> here </ins>](https://cornercase.herokuapp.com/)
 
 
 ## Installation
