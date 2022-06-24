@@ -15,12 +15,21 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_FOLDER = os.path.abspath(os.path.dirname(__file__))
- 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Extra places for collectstatic to find static files.
 # STATICFILES_DIRS = (
@@ -60,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'CornerCase.urls'
