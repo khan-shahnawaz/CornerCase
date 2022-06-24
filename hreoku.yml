@@ -1,3 +1,33 @@
-build:
-  docker:
-    web: Dockerfile
+version: '3'
+ 
+services:
+  cornercase:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/CornerCase
+    command: >
+      sh -c "docker &&
+      python3 manage.py makemigrations
+             python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+  redis:
+    image: redis:alpine
+    command: redis-server
+  celery:
+    restart: always
+    build:
+      context: .
+    command: celery -A CornerCase worker -l info
+    volumes:
+      - .:/CornerCase
+    # environment:
+    #   - DB_HOST=db
+    #   - DB_NAME=app
+    #   - DB_USER=postgres
+    #   - DB_PASS=supersecretpassword
+    depends_on:
+      - redis
+      - cornercase

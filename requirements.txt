@@ -14,6 +14,7 @@ Deprecated==1.2.13
 Django==4.0.5
 docker==5.0.3
 epicbox==1.1.0
+gunicorn==20.1.0
 idna==3.3
 kombu==5.2.4
 packaging==21.3
