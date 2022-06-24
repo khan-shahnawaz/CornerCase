@@ -26,8 +26,8 @@ celery = Celery(__name__)
 celery.config_from_object(__name__)
 
 PROFILES=[]
-# for language in ProgrammingLanguage.objects.all():
-#     PROFILES.append(epicbox.Profile(language.name,language.dockerImage))
+for language in ProgrammingLanguage.objects.all():
+    PROFILES.append(epicbox.Profile(language.name,language.dockerImage))
 epicbox.configure(profiles=PROFILES)
 @shared_task(acks_late=True)
 def executeTask(queueid):
