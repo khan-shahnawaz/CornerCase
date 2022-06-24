@@ -43,7 +43,8 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
 
 DEBUG = False
 
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'Value'
 
 # SECURITY WARNING: update this when you have the production host
 ALLOWED_HOSTS = [".herokuapp.com"]
