@@ -21,13 +21,12 @@ STATIC_ROOT = os.path.join(PROJECT_FOLDER, "static")
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-72w9c$dyk6r-592knj41_*tmbch8=n@lw69%!pmu_$3u30wo8@'
+DEBUG = False
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ['SECRET_KEY']
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: update this when you have the production host
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
