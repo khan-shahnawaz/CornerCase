@@ -27,9 +27,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 # Extra places for collectstatic to find static files.
 # STATICFILES_DIRS = (
