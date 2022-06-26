@@ -82,8 +82,8 @@ The admin portal shows the following details:
 
   * Click on Programming Language in the sidebar then click on Add programming Language.
   * Enter name, compile command, execution command and extension of the programming language.
-  * Enter the name of the docker image which 
-  * Add the programming language in the dockerised environement by adding the line "RUN <command to install the compiler in alpine>" in the dockerfile after the first line
+  * Enter the name of the docker image on which the programs of that language will run.
+  * Make sure that the docker images for each language are pulled in the host system.
     ##### Compile command format
       * Write how to compile the file in the language by writing its command. Eg. g++ filename. The token filename will be replaced by actual code file name at the time of compilation.
       * If the language is not compiled, simply write 'NA' (case-sensitive, without quotes).
