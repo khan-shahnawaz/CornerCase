@@ -8,14 +8,13 @@ RUN pip install --upgrade pip setuptools wheel
 
 RUN apk add musl-dev
 
-
 RUN pip install -r /requirements.txt --default-timeout=100
 
 RUN pip install tzdata
 
 RUN apk add --no-cache g++
 
-RUN apk add docker docker-compose
+
 RUN mkdir /CornerCase
 COPY . /CornerCase
 WORKDIR /CornerCase
