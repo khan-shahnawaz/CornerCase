@@ -1,6 +1,6 @@
 # CornerCase
 
-A web application designed to find the corner test cases for incorrect code built using django, redis and celery. The site is deployed [<ins> here </ins>](https://cornercase.herokuapp.com/)
+A web application designed to find the corner test cases for incorrect code built using django, redis and celery. The site is deployed [<ins> here </ins>](http://ec2-44-207-10-175.compute-1.amazonaws.com:8000/)
 
 
 ## Installation
@@ -82,13 +82,15 @@ The admin portal shows the following details:
 
   * Click on Programming Language in the sidebar then click on Add programming Language.
   * Enter name, compile command, execution command and extension of the programming language.
+  * Enter the name of the docker image which 
   * Add the programming language in the dockerised environement by adding the line "RUN <command to install the compiler in alpine>" in the dockerfile after the first line
     ##### Compile command format
-      * Write how to compile the file in the language by writing its command. Eg. g++ filename -o. Here, -o flag is mandatory for all compiled language. The token filename will be replaced by actual code file name at the time of compilation.
+      * Write how to compile the file in the language by writing its command. Eg. g++ filename. The token filename will be replaced by actual code file name at the time of compilation.
       * If the language is not compiled, simply write 'NA' (case-sensitive, without quotes).
    
     ##### Execute command format
       * Write the command to execute the file. For eg. python filename. filename will be replaced by the code file name at the time of executation
       * If the language is compiled, simply write 'NA' (case-sensitive, without quotes).
 
-![127 0 0 1_8000_admin_Tester_programminglanguage_1_change_](https://user-images.githubusercontent.com/79746977/174822783-3bf2be87-924b-4f62-a589-900063c42293.png)
+![ec2-44-207-10-175 compute-1 amazonaws com_8000_admin_Tester_programminglanguage_1_change_](https://user-images.githubusercontent.com/79746977/175820212-4e4905f2-30f3-4446-b2b8-8d6ee4cea1d9.png)
+
