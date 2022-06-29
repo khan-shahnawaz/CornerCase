@@ -12,6 +12,7 @@ click-plugins==1.1.1
 click-repl==0.2.0
 Deprecated==1.2.13
 Django==4.0.5
+django-environ==0.9.0
 docker==5.0.3
 epicbox==1.1.0
 idna==3.3

@@ -1,0 +1,78 @@
+.UserSolution
+{
+    float: left;
+    width: 50%;
+    margin-left: 0%;
+
+}
+#UserSolutionLabel
+{
+    font-weight:bold; 
+    font-size:larger;
+    display: block;
+    text-align: center;
+}
+#UserCode
+{
+    height: 500px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.UserLang
+{
+    float: left
+}
+.EditorialSolution
+{
+    float:right;
+    width: 50%;
+    margin-right: 0%; 
+    height: fit-content;  
+}
+#EditorialSolutionLabel
+{
+    font-weight:bold; 
+    font-size:larger;
+    display: block;
+    text-align: center;
+}
+#EditorialCode
+{
+    height: 500px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.EditorialLang
+{
+    float: right;
+}
+.Generator
+{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+    width: 50%;
+    display: inline-block;
+}
+#GeneratorSolutionLabel
+{
+    font-weight:bold; 
+    font-size:larger;
+    display: block;
+    text-align: center;
+   
+}
+#GeneratorCode
+{
+    height: 500px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.GeneratorLang
+{
+    float: left
+}

@@ -5,14 +5,14 @@ services:
     build:
       context: .
     ports:
-      - "8000:8000"
+      - "80:8000"
     volumes:
       - .:/CornerCase
     command: >
       sh -c "docker &&
       python3 manage.py makemigrations
              python3 manage.py migrate &&
-             python3 manage.py runserver 0.0.0.0:8000"
+             python3 manage.py runserver 0.0.0.0:8000 --insecure"
   redis:
     image: redis:alpine
     command: redis-server
@@ -23,6 +23,7 @@ services:
     command: celery -A CornerCase worker -l info
     volumes:
       - .:/CornerCase
+      - /var/run/docker.sock:/var/run/docker.sock
     # environment:
     #   - DB_HOST=db
     #   - DB_NAME=app

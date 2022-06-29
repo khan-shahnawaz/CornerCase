@@ -13,7 +13,7 @@ testCaseLimit=10
 
 #Constants representing limits of code executation
 TIME_LIMIT=2
-MEM_LIMIT=256
+MEM_LIMIT=512
 LIMITS ={'cputime':TIME_LIMIT,'memory':MEM_LIMIT}
 
 #Flags representing corresponding status
