@@ -1,4 +1,5 @@
 import string
+import traceback
 from time import sleep
 import subprocess
 import celery
@@ -15,8 +16,8 @@ testCaseLimit=10
 TIME_LIMIT=2
 COMPILE_TIME_LIMIT=15
 MEM_LIMIT=512
-LIMITS ={'cputime':TIME_LIMIT,'memory':MEM_LIMIT}
-COMPILE_LIMITS ={'cputime':COMPILE_TIME_LIMIT,'memory':MEM_LIMIT}
+LIMITS ={'cputime':TIME_LIMIT,'memory':MEM_LIMIT,'processes':100}
+COMPILE_LIMITS ={'cputime':COMPILE_TIME_LIMIT,'memory':MEM_LIMIT,'processes':100}
 
 #Flags representing corresponding status
 EXECUTED=0
@@ -38,7 +39,7 @@ def executeTask(queueid):
         if language.compileCommand!='NA':
             toExecute=language.compileCommand.replace('filename',codeFile.name)+' -o '+executableName
             with epicbox.working_directory() as work_dir:
-                result=epicbox.run(language.name, toExecute, files=files, limits=COMPILE_TIME_LIMIT,workdir=work_dir)
+                result=epicbox.run(language.name, toExecute, files=files, limits=COMPILE_LIMITS,workdir=work_dir)
                 if result['exit_code']!=0:
                     if result['timeout'] or result['oom_killed']:
                         outputFile.write("Error: Compilation exceeded time limit or memory limit")
@@ -89,6 +90,9 @@ def executeTask(queueid):
         for testcase in range(testCaseLimit):
             newTest=Test()
             newTest.executable=newExecutable
+            newTest.userCPUtime=0
+            newTest.editorialCPUtime=0
+            newTest.generatorCPUtime=0
             generatorLanguage=ProgrammingLanguage.objects.get(id=newExecutable.generatorLanguage)
             generatorFile=open('./ProgramFiles/generator'+generatorLanguage.fileExtension,'w+')
             generatorFile.write(newExecutable.generatorCode)
@@ -180,5 +184,5 @@ def executeTask(queueid):
         newExecutable.status='Completed'
     except Exception as errorMessage:
         newExecutable.status='Failed'
-        open('ErrorMessage.txt','w').write(str(errorMessage))
+        open('ErrorMessage.txt','w').write(str(traceback.format_exc()))
     newExecutable.save()
