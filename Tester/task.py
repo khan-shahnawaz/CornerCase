@@ -13,8 +13,10 @@ testCaseLimit=10
 
 #Constants representing limits of code executation
 TIME_LIMIT=2
+COMPILE_TIME_LIMIT=15
 MEM_LIMIT=512
 LIMITS ={'cputime':TIME_LIMIT,'memory':MEM_LIMIT}
+COMPILE_LIMITS ={'cputime':COMPILE_TIME_LIMIT,'memory':MEM_LIMIT}
 
 #Flags representing corresponding status
 EXECUTED=0
@@ -36,7 +38,7 @@ def executeTask(queueid):
         if language.compileCommand!='NA':
             toExecute=language.compileCommand.replace('filename',codeFile.name)+' -o '+executableName
             with epicbox.working_directory() as work_dir:
-                result=epicbox.run(language.name, toExecute, files=files, limits=LIMITS,workdir=work_dir)
+                result=epicbox.run(language.name, toExecute, files=files, limits=COMPILE_TIME_LIMIT,workdir=work_dir)
                 if result['exit_code']!=0:
                     if result['timeout'] or result['oom_killed']:
                         outputFile.write("Error: Compilation exceeded time limit or memory limit")
